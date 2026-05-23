@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Xojiakbar & Ruxshona — To'y Taklifnomasi</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Great+Vibes&display=swap" rel="stylesheet"/>
@@ -14,7 +15,6 @@
       --gold-dark: #8b6914;
       --cream: #fdf8f0;
       --dark: #2c1810;
-      --rose: #d4a0a0;
     }
 
     html { scroll-behavior: smooth; }
@@ -24,23 +24,25 @@
       font-family: 'Cormorant Garamond', serif;
       color: var(--dark);
       overflow-x: hidden;
+      width: 100%;
     }
 
-    /* ── Particle canvas ── */
+    /* ── Particles ── */
     #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
 
-    /* ── Cover section ── */
+    /* ── COVER ── */
     .cover {
       position: relative;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center;
       background: linear-gradient(160deg, #1a0f08 0%, #2d1a0e 40%, #1a0f08 100%);
       overflow: hidden;
       z-index: 1;
+      padding: 2rem 1rem;
     }
-
     .cover::before {
       content: '';
       position: absolute; inset: 0;
@@ -49,155 +51,172 @@
         radial-gradient(ellipse 60% 40% at 50% 100%, rgba(201,168,76,.12) 0%, transparent 70%);
     }
 
-    /* Ornament SVG rings */
+    /* rings — telefonda kichikroq */
     .ring {
       position: absolute;
       border-radius: 50%;
       border: 1px solid rgba(201,168,76,.25);
       animation: pulse-ring 6s ease-in-out infinite;
     }
-    .ring:nth-child(1){ width:340px; height:340px; animation-delay:0s; }
-    .ring:nth-child(2){ width:480px; height:480px; animation-delay:1s; border-color:rgba(201,168,76,.15); }
-    .ring:nth-child(3){ width:620px; height:620px; animation-delay:2s; border-color:rgba(201,168,76,.08); }
+    .ring:nth-child(1){ width: min(340px, 80vw); height: min(340px, 80vw); }
+    .ring:nth-child(2){ width: min(480px, 110vw); height: min(480px, 110vw); animation-delay:1s; border-color:rgba(201,168,76,.15); }
+    .ring:nth-child(3){ width: min(620px, 140vw); height: min(620px, 140vw); animation-delay:2s; border-color:rgba(201,168,76,.08); }
 
     @keyframes pulse-ring {
       0%,100%{ transform:scale(1); opacity:.6; }
       50%{ transform:scale(1.04); opacity:1; }
     }
 
-    .cover-content { position: relative; z-index: 2; padding: 2rem; }
+    .cover-content { position: relative; z-index: 2; width: 100%; max-width: 600px; }
 
     .bismillah {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1rem, 3vw, 1.4rem);
+      font-size: clamp(.85rem, 2.5vw, 1.3rem);
       color: var(--gold-light);
-      letter-spacing: .3em;
+      letter-spacing: .25em;
       opacity: 0;
       animation: fadeUp .8s .3s forwards;
     }
 
     .divider-ornament {
-      display: flex; align-items: center; gap: 1rem;
-      justify-content: center; margin: 1rem 0;
+      display: flex; align-items: center; gap: .75rem;
+      justify-content: center; margin: .9rem 0;
       opacity: 0; animation: fadeUp .8s .5s forwards;
     }
-    .divider-ornament span { color: var(--gold); font-size: 1.2rem; }
-    .divider-line { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
+    .divider-ornament span { color: var(--gold); font-size: 1.1rem; }
+    .divider-line { width: clamp(40px, 10vw, 80px); height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); }
 
     .couple-names {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(3.5rem, 14vw, 7rem);
+      font-size: clamp(3rem, 13vw, 7rem);
       line-height: 1;
       color: var(--gold);
       text-shadow: 0 0 60px rgba(201,168,76,.5), 0 2px 4px rgba(0,0,0,.4);
       opacity: 0;
       animation: fadeUp .9s .7s forwards;
+      word-break: break-word;
     }
-
     .couple-names .amp {
       font-size: .55em;
       color: var(--gold-light);
       display: block;
-      line-height: .8;
+      line-height: .9;
     }
 
     .tagline {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-size: clamp(.8rem, 2vw, 1.1rem);
       color: var(--gold-light);
-      letter-spacing: .25em;
+      letter-spacing: .2em;
       text-transform: uppercase;
-      margin-top: 1.5rem;
+      margin-top: 1.2rem;
       opacity: 0;
       animation: fadeUp .8s .9s forwards;
     }
 
     .scroll-hint {
-      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-      color: var(--gold); opacity: .7; font-size: .85rem; letter-spacing: .2em;
-      text-transform: uppercase;
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      color: var(--gold); opacity: .7; font-size: .8rem; letter-spacing: .15em;
+      text-transform: uppercase; white-space: nowrap;
       animation: bounce 2s ease-in-out infinite;
     }
     .scroll-hint::after { content: ' ↓'; }
-    @keyframes bounce { 0%,100%{ transform:translateX(-50%) translateY(0); } 50%{ transform:translateX(-50%) translateY(8px); } }
 
+    @keyframes bounce {
+      0%,100%{ transform:translateX(-50%) translateY(0); }
+      50%{ transform:translateX(-50%) translateY(8px); }
+    }
     @keyframes fadeUp {
-      from { opacity:0; transform:translateY(28px); }
+      from { opacity:0; transform:translateY(24px); }
       to   { opacity:1; transform:translateY(0); }
     }
 
-    /* ── Main card ── */
+    /* ── CARD ── */
     .card {
       background: var(--cream);
       max-width: 680px;
+      width: 100%;
       margin: 0 auto;
       position: relative;
       z-index: 1;
       overflow: hidden;
     }
 
-    /* Floral corner decorations */
     .corner {
       position: absolute;
-      width: 100px; height: 100px;
+      width: clamp(60px, 12vw, 100px);
+      height: clamp(60px, 12vw, 100px);
       opacity: .35;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M5,5 Q30,5 50,25 Q30,5 5,30' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3Cpath d='M5,5 Q5,30 25,50 Q5,30 30,5' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='8' cy='8' r='3' fill='%23c9a84c'/%3E%3Ccircle cx='25' cy='15' r='2' fill='%23c9a84c'/%3E%3Ccircle cx='15' cy='25' r='2' fill='%23c9a84c'/%3E%3C/svg%3E");
+      background-size: contain; background-repeat: no-repeat;
     }
     .corner.tl { top:0; left:0; }
     .corner.tr { top:0; right:0; transform:scaleX(-1); }
     .corner.bl { bottom:0; left:0; transform:scaleY(-1); }
     .corner.br { bottom:0; right:0; transform:scale(-1); }
 
-    /* ── Section styles ── */
-    section { padding: 3.5rem 2.5rem; text-align: center; position: relative; }
+    /* ── SECTIONS ── */
+    section {
+      padding: clamp(2rem, 6vw, 3.5rem) clamp(1rem, 5vw, 2.5rem);
+      text-align: center;
+      position: relative;
+    }
 
     .section-label {
       font-family: 'Playfair Display', serif;
-      font-size: .8rem;
-      letter-spacing: .4em;
+      font-size: clamp(.65rem, 1.8vw, .8rem);
+      letter-spacing: .35em;
       text-transform: uppercase;
       color: var(--gold-dark);
-      margin-bottom: .75rem;
+      margin-bottom: .6rem;
     }
-
     .section-title {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(2rem, 8vw, 3rem);
+      font-size: clamp(1.8rem, 7vw, 3rem);
       color: var(--gold-dark);
-      margin-bottom: 1rem;
+      margin-bottom: .8rem;
     }
-
     .gold-line {
-      width: 60px; height: 2px;
+      width: 50px; height: 2px;
       background: linear-gradient(to right, transparent, var(--gold), transparent);
-      margin: .75rem auto 1.5rem;
+      margin: .6rem auto 1.2rem;
     }
 
-    /* ── Invite text ── */
+    /* ── INVITE TEXT ── */
     .invite-text {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-size: clamp(.95rem, 2.5vw, 1.2rem);
       line-height: 2;
       color: #4a3728;
       font-style: italic;
     }
 
-    /* ── Couple hero ── */
+    /* ── COUPLE SECTION ── */
     .couple-section {
       background: linear-gradient(135deg, #2c1810 0%, #4a2c1a 100%);
       color: var(--cream);
-      padding: 4rem 2rem;
+      padding: clamp(2.5rem, 7vw, 4rem) 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
-    .hearts { font-size: 2.5rem; letter-spacing: .5rem; animation: heartbeat 1.5s ease-in-out infinite; }
+    .hearts {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      letter-spacing: .4rem;
+      animation: heartbeat 1.5s ease-in-out infinite;
+    }
     @keyframes heartbeat { 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.15); } }
 
     .name-display {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.5rem, 10vw, 5rem);
+      font-size: clamp(2.2rem, 10vw, 5rem);
       color: var(--gold);
       text-shadow: 0 0 30px rgba(201,168,76,.4);
-      line-height: 1.1;
+      line-height: 1.15;
+      text-align: center;
+      width: 100%;
     }
-
     .name-display .connector {
       font-size: .4em;
       color: var(--gold-light);
@@ -205,149 +224,173 @@
       letter-spacing: .1em;
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      margin: .3rem 0;
+      margin: .2rem 0;
     }
 
-    /* ── Date / time / place ── */
+    /* ── DETAILS ── */
     .details-section { background: #fff; }
 
     .info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(.75rem, 2vw, 1.5rem);
+      margin-top: 1.5rem;
     }
-
     .info-card {
-      padding: 2rem 1.5rem;
+      padding: clamp(1rem, 3vw, 1.75rem) clamp(.75rem, 2vw, 1.25rem);
       border: 1px solid var(--gold-light);
-      border-radius: 4px;
-      position: relative;
+      border-radius: 6px;
       transition: transform .3s, box-shadow .3s;
     }
     .info-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(201,168,76,.2); }
-
-    .info-icon { font-size: 2rem; margin-bottom: .75rem; }
-
+    .info-icon { font-size: clamp(1.4rem, 4vw, 2rem); margin-bottom: .5rem; }
     .info-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: .75rem;
-      letter-spacing: .35em;
+      font-size: clamp(.6rem, 1.5vw, .75rem);
+      letter-spacing: .3em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: .5rem;
+      margin-bottom: .4rem;
     }
-
     .info-card p {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-size: clamp(.9rem, 2.5vw, 1.15rem);
       font-weight: 700;
       color: var(--dark);
       font-family: 'Playfair Display', serif;
     }
-    .info-card small { font-size: .85rem; color: #7a6050; font-style: italic; }
-
-    /* ── Countdown ── */
-    .countdown-section {
-      background: linear-gradient(135deg, #fdf3e3 0%, #faf0e8 100%);
+    .info-card small {
+      font-size: clamp(.7rem, 1.8vw, .85rem);
+      color: #7a6050;
+      font-style: italic;
     }
+
+    /* ── MAP BUTTONS ── */
+    .map-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .75rem;
+      margin-top: 1.75rem;
+    }
+    .map-btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: clamp(.65rem, 2vw, .9rem) clamp(1rem, 3vw, 1.8rem);
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(.8rem, 2vw, .95rem);
+      letter-spacing: .1em;
+      border-radius: 50px;
+      transition: transform .25s, box-shadow .25s;
+      white-space: nowrap;
+    }
+    .map-btn:hover { transform: translateY(-3px); }
+    .map-btn.google { background: linear-gradient(135deg, #8b6914, #c9a84c); color:#fff; box-shadow:0 6px 20px rgba(139,105,20,.4); }
+    .map-btn.yandex { background: linear-gradient(135deg, #cc0000, #ff3333); color:#fff; box-shadow:0 6px 20px rgba(200,0,0,.3); }
+    .map-btn.twogis { background: linear-gradient(135deg, #1a7a1a, #2db82d); color:#fff; box-shadow:0 6px 20px rgba(0,150,0,.3); }
+
+    /* ── COUNTDOWN ── */
+    .countdown-section { background: linear-gradient(135deg, #fdf3e3 0%, #faf0e8 100%); }
 
     .countdown {
       display: flex;
       justify-content: center;
-      gap: clamp(.75rem, 3vw, 2rem);
-      flex-wrap: wrap;
-      margin-top: 2rem;
+      gap: clamp(.5rem, 2.5vw, 1.5rem);
+      flex-wrap: nowrap;
+      margin-top: 1.5rem;
     }
-
     .cd-box {
-      min-width: 80px;
-      padding: 1.25rem 1rem;
+      flex: 1;
+      max-width: 90px;
+      min-width: 0;
+      padding: clamp(.8rem, 2.5vw, 1.25rem) clamp(.5rem, 1.5vw, 1rem);
       background: var(--dark);
       border-radius: 8px;
       border-bottom: 3px solid var(--gold);
       box-shadow: 0 8px 24px rgba(0,0,0,.25);
+      text-align: center;
     }
-
     .cd-num {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 8vw, 3rem);
+      font-size: clamp(1.6rem, 6vw, 3rem);
       color: var(--gold);
       line-height: 1;
       display: block;
     }
     .cd-label {
-      font-size: .7rem;
+      font-size: clamp(.55rem, 1.5vw, .7rem);
       color: var(--gold-light);
-      letter-spacing: .2em;
+      letter-spacing: .15em;
       text-transform: uppercase;
-      margin-top: .4rem;
+      margin-top: .3rem;
       display: block;
     }
 
-    /* ── Map link ── */
-    .map-btn {
-      display: inline-flex; align-items: center; gap: .6rem;
-      margin-top: 2rem;
-      padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
-      color: #fff;
-      text-decoration: none;
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      letter-spacing: .15em;
-      border-radius: 50px;
-      transition: transform .25s, box-shadow .25s;
-      box-shadow: 0 6px 20px rgba(139,105,20,.4);
-    }
-    .map-btn:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(139,105,20,.5); }
-
-    /* ── Closing wish ── */
+    /* ── CLOSING ── */
     .closing-section {
       background: linear-gradient(160deg, #2c1810, #1a0f08);
       color: var(--cream);
-      padding: 5rem 2rem;
+      padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 5vw, 2rem);
+      text-align: center;
     }
-
     .closing-text {
-      font-size: clamp(1.1rem, 3vw, 1.4rem);
-      line-height: 2.2;
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      line-height: 2.1;
       color: var(--gold-light);
       font-style: italic;
-      max-width: 480px;
+      max-width: 460px;
       margin: 0 auto;
     }
-
     .signature {
       font-family: 'Great Vibes', cursive;
-      font-size: clamp(2.5rem, 8vw, 3.5rem);
+      font-size: clamp(2rem, 7vw, 3.5rem);
       color: var(--gold);
+      margin-top: 1.2rem;
+    }
+    .closing-date {
       margin-top: 1.5rem;
+      color: var(--gold-light);
+      font-size: clamp(.8rem, 2vw, .9rem);
+      letter-spacing: .2em;
+      opacity: .7;
     }
 
-    /* ── Floating petals ── */
+    /* ── PETALS ── */
     .petal {
       position: fixed;
-      width: 12px; height: 12px;
       border-radius: 0 70% 0 70%;
       opacity: 0;
       pointer-events: none;
       z-index: 999;
       animation: fall linear infinite;
     }
-
     @keyframes fall {
       0%   { transform: translateY(-20px) rotate(0deg); opacity:.9; }
       100% { transform: translateY(110vh) rotate(720deg); opacity:0; }
     }
 
-    /* ── Scroll reveal ── */
-    .reveal { opacity:0; transform:translateY(40px); transition:opacity .8s, transform .8s; }
+    /* ── REVEAL ── */
+    .reveal { opacity:0; transform:translateY(35px); transition:opacity .8s, transform .8s; }
     .reveal.visible { opacity:1; transform:translateY(0); }
 
-    /* ── Responsive ── */
-    @media(max-width:480px){
-      section { padding:2.5rem 1.25rem; }
-      .info-grid { grid-template-columns:1fr 1fr; gap:1rem; }
+    /* ── MOBILE <= 480px ── */
+    @media (max-width: 480px) {
+      .info-grid { grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+      .info-card { padding: .9rem .5rem; }
+      .info-card h3 { letter-spacing: .1em; }
+      .map-buttons { flex-direction: column; align-items: center; }
+      .map-btn { width: 100%; max-width: 280px; justify-content: center; }
+      .countdown { gap: .4rem; }
+      .cd-box { border-radius: 6px; }
+    }
+
+    /* ── TABLET 481-768px ── */
+    @media (min-width: 481px) and (max-width: 768px) {
+      .info-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ── DESKTOP > 768px ── */
+    @media (min-width: 769px) {
+      .map-buttons { flex-direction: row; }
     }
   </style>
 </head>
@@ -355,33 +398,28 @@
 
 <canvas id="particles"></canvas>
 
-<!-- ═══ COVER ═══ -->
+<!-- COVER -->
 <div class="cover">
   <div class="ring"></div>
   <div class="ring"></div>
   <div class="ring"></div>
-
   <div class="cover-content">
     <p class="bismillah">Bismillahir Rohmanir Rohiym</p>
-
     <div class="divider-ornament">
       <div class="divider-line"></div>
       <span>❧</span>
       <div class="divider-line"></div>
     </div>
-
     <div class="couple-names">
       Xojiakbar
       <span class="amp">& Ruxshona</span>
     </div>
-
     <p class="tagline">To'y Taklifnomasi · 2026</p>
   </div>
-
   <div class="scroll-hint">Davom eting</div>
 </div>
 
-<!-- ═══ CARD ═══ -->
+<!-- CARD -->
 <div class="card">
   <div class="corner tl"></div>
   <div class="corner tr"></div>
@@ -399,7 +437,7 @@
     </p>
   </section>
 
-  <!-- Juft ismlar -->
+  <!-- Ismlar -->
   <div class="couple-section reveal">
     <div class="hearts">♥ ♥ ♥</div>
     <div class="name-display">
@@ -407,7 +445,7 @@
       <span class="connector">va</span>
       Ruxshona
     </div>
-    <div class="hearts" style="margin-top:1.5rem;">♥ ♥ ♥</div>
+    <div class="hearts" style="margin-top:1.2rem;">♥ ♥ ♥</div>
   </div>
 
   <!-- Tafsilotlar -->
@@ -415,13 +453,12 @@
     <p class="section-label">To'y tafsilotlari</p>
     <h2 class="section-title">Sana & Joy</h2>
     <div class="gold-line"></div>
-
     <div class="info-grid">
       <div class="info-card">
         <div class="info-icon">📅</div>
         <h3>Sana</h3>
         <p>18 Iyun</p>
-        <small>2026-yil, Payshanba</small>
+        <small>2026-yil</small>
       </div>
       <div class="info-card">
         <div class="info-icon">🕕</div>
@@ -437,23 +474,30 @@
       </div>
     </div>
 
-    <a class="map-btn" href="https://www.google.com/maps/search/Ozbegim+toyxonasi" target="_blank">
-      📍 Xaritada ko'rish
-    </a>
+    <!-- Xarita tugmalari -->
+    <div class="map-buttons">
+      <a class="map-btn google" href="https://www.google.com/maps/search/Ozbegim+toyxonasi+Toshkent" target="_blank">
+        📍 Google Maps
+      </a>
+      <a class="map-btn yandex" href="https://yandex.uz/maps/?text=Ozbegim+toyxonasi+Toshkent" target="_blank">
+        📍 Yandex Maps
+      </a>
+      <a class="map-btn twogis" href="https://2gis.uz/tashkent/search/Ozbegim%20toyxonasi" target="_blank">
+        📍 2GIS
+      </a>
+    </div>
   </section>
 
-  <!-- Ortiqcha chiziq -->
   <div class="corner bl"></div>
   <div class="corner br"></div>
 </div>
 
-<!-- ═══ COUNTDOWN ═══ -->
-<div style="max-width:680px;margin:0 auto;position:relative;z-index:1;">
+<!-- COUNTDOWN -->
+<div style="max-width:680px;margin:0 auto;position:relative;z-index:1;width:100%;">
   <section class="countdown-section reveal">
     <p class="section-label">To'yga qadar</p>
     <h2 class="section-title">Kutilmoqda...</h2>
     <div class="gold-line"></div>
-
     <div class="countdown">
       <div class="cd-box">
         <span class="cd-num" id="cd-days">--</span>
@@ -474,101 +518,74 @@
     </div>
   </section>
 
-  <!-- Yopilish tilagi -->
+  <!-- Yakuniy -->
   <section class="closing-section reveal">
-    <div class="divider-ornament" style="opacity:1;">
+    <div class="divider-ornament" style="opacity:1;margin-bottom:1.5rem;">
       <div class="divider-line" style="background:linear-gradient(to right,transparent,var(--gold),transparent);"></div>
       <span style="color:var(--gold);">✦</span>
       <div class="divider-line" style="background:linear-gradient(to right,transparent,var(--gold),transparent);"></div>
     </div>
-
     <p class="closing-text">
       Keling, bu baxtli kunni birga nishonlaymiz.<br/>
       Sizning tashrif buyurishingiz —<br/>
       bizning to'yimizga eng chiroyli bezak.
     </p>
-
     <div class="signature">Xojiakbar & Ruxshona</div>
-
-    <div style="margin-top:2rem;color:var(--gold-light);font-size:.9rem;letter-spacing:.2em;opacity:.7;">
-      18 · 06 · 2026
-    </div>
+    <div class="closing-date">18 · 06 · 2026</div>
   </section>
 </div>
 
-<!-- Falling petals -->
 <script>
-  // ── Petals ──
-  const colors = ['#e8d5a3','#c9a84c','#d4a0a0','#f0e6d3'];
+  // Petals
+  const colors=['#e8d5a3','#c9a84c','#d4a0a0','#f0e6d3'];
   function createPetal(){
-    const p = document.createElement('div');
-    p.className = 'petal';
-    p.style.left = Math.random()*100+'vw';
-    p.style.background = colors[Math.floor(Math.random()*colors.length)];
-    p.style.animationDuration = (6+Math.random()*8)+'s';
-    p.style.animationDelay = Math.random()*4+'s';
-    p.style.width = p.style.height = (8+Math.random()*10)+'px';
+    const p=document.createElement('div');
+    p.className='petal';
+    p.style.left=Math.random()*100+'vw';
+    p.style.background=colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDuration=(6+Math.random()*8)+'s';
+    p.style.animationDelay=Math.random()*4+'s';
+    const sz=6+Math.random()*8;
+    p.style.width=sz+'px'; p.style.height=sz+'px';
     document.body.appendChild(p);
-    setTimeout(()=>p.remove(), 14000);
+    setTimeout(()=>p.remove(),14000);
   }
-  setInterval(createPetal, 600);
+  setInterval(createPetal,700);
 
-  // ── Particle canvas ──
-  const canvas = document.getElementById('particles');
-  const ctx = canvas.getContext('2d');
-  let stars = [];
+  // Stars
+  const canvas=document.getElementById('particles');
+  const ctx=canvas.getContext('2d');
+  let stars=[];
   function resize(){ canvas.width=innerWidth; canvas.height=innerHeight; }
-  resize(); window.addEventListener('resize', resize);
-
-  for(let i=0;i<120;i++){
-    stars.push({
-      x:Math.random()*innerWidth, y:Math.random()*innerHeight,
-      r:Math.random()*1.2+.3,
-      a:Math.random(), da:(Math.random()*.008+.002)*(Math.random()<.5?1:-1)
-    });
+  resize(); window.addEventListener('resize',resize);
+  for(let i=0;i<100;i++){
+    stars.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,
+      r:Math.random()*1.2+.3,a:Math.random(),da:(Math.random()*.008+.002)*(Math.random()<.5?1:-1)});
   }
   function drawStars(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     stars.forEach(s=>{
-      s.a += s.da;
-      if(s.a<=0||s.a>=1) s.da*=-1;
-      ctx.beginPath();
-      ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(201,168,76,${s.a})`;
-      ctx.fill();
+      s.a+=s.da; if(s.a<=0||s.a>=1)s.da*=-1;
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(201,168,76,${s.a})`; ctx.fill();
     });
     requestAnimationFrame(drawStars);
   }
   drawStars();
 
-  // ── Countdown ──
+  // Countdown
   function updateCountdown(){
-    const target = new Date('2026-06-18T18:00:00');
-    const now = new Date();
-    const diff = target - now;
-    if(diff <= 0){
-      document.getElementById('cd-days').textContent='0';
-      document.getElementById('cd-hours').textContent='0';
-      document.getElementById('cd-mins').textContent='0';
-      document.getElementById('cd-secs').textContent='0';
-      return;
-    }
-    const days  = Math.floor(diff/864e5);
-    const hours = Math.floor((diff%864e5)/36e5);
-    const mins  = Math.floor((diff%36e5)/6e4);
-    const secs  = Math.floor((diff%6e4)/1e3);
-    document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
-    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-    document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
-    document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+    const diff=new Date('2026-06-18T18:00:00')-new Date();
+    if(diff<=0){['days','hours','mins','secs'].forEach(id=>document.getElementById('cd-'+id).textContent='0');return;}
+    document.getElementById('cd-days').textContent=String(Math.floor(diff/864e5)).padStart(2,'0');
+    document.getElementById('cd-hours').textContent=String(Math.floor((diff%864e5)/36e5)).padStart(2,'0');
+    document.getElementById('cd-mins').textContent=String(Math.floor((diff%36e5)/6e4)).padStart(2,'0');
+    document.getElementById('cd-secs').textContent=String(Math.floor((diff%6e4)/1e3)).padStart(2,'0');
   }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  updateCountdown(); setInterval(updateCountdown,1000);
 
-  // ── Scroll reveal ──
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
-  },{threshold:.15});
+  // Scroll reveal
+  const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
